@@ -1,0 +1,18 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- develop
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NexusIqPipelineTask@1
+  inputs:
+    nexusIqService: 'NexusIQ'
+    applicationId: 'WebGoat__lpereira2022'
+    stage: 'Build'
+    scanTargets: '**/*.*'
